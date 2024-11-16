@@ -20,11 +20,32 @@
     .result-list {
         display: flex;
         flex-direction: column;
+        align-items: center;
         
         padding: 30px 80px; 
 
         .article-card {
             margin-bottom: 10px;
         }
+
+        .result-message {
+            color: var(--sys-on-primary-fixed);
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .load {
+            border: 8px solid lighten(#181a1d, 70%); 
+            border-top: 8px solid var(--sys-primary);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 2s linear infinite;
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
     }
 }

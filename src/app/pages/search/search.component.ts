@@ -5,6 +5,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ArticleCardComponent } from './article-card/article-card.component';
 import { Article } from '../../model/article.model';
+import { ArticleService } from '../../services/article-service.service';
 
 @Component({
   selector: 'app-search',
@@ -17,6 +18,10 @@ export class SearchComponent {
   searchFormControl = new FormControl('', []);
 
   articles: Article[] | undefined
+  loading: boolean = false;
+  noContent: boolean = true;
+
+  constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
     const article = {
@@ -81,14 +86,36 @@ export class SearchComponent {
         },
       ]
     }
-    this.articles = [
-      article,
-      article,
-      article
-    ]
+    this.articles = [];
+    this.noContent = false;
+  }
+
+  focusOnInput() {
+    this.noContent = false;
   }
 
   doSearch() {
-    console.log(this.searchFormControl.value)
+    this.loading = true;
+
+    this.articleService.findBy(this.searchFormControl.value || '').subscribe(
+      {
+        next: (response) => {
+          this.articles = response;
+          this.loading = false;
+
+          if (response.length == 0) {
+            this.noContent = true;
+          }
+        },
+        error: (e) => {
+          this.articles = []
+          this.loading = false;
+          this.noContent = true;
+        },
+        complete: () => {
+          this.loading = false;
+        }
+      }
+    );
   }
 }
