@@ -1,0 +1,45 @@
+.article-card {
+    display: flex;
+    flex-direction: column;
+    
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 0.25rem;
+    padding: 15px;
+
+    &:hover {
+        box-shadow: var(--sys-outline) 0px 1px 4px;
+    } 
+
+    .article-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color:  var(--sys-primary);
+    }
+
+    .authors-name {
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .abstract-title {
+        font-size: 0.75rem;
+        font-weight: 400;
+        padding: 12px 0 12px 12px;
+
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        line-clamp: 5;
+        box-orient: vertical;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+
+        border-left: 1px solid var(--sys-outline);
+    }
+
+    .others-info {
+        font-size: 0.75rem;
+        font-weight: 500;
+
+    }
+}

@@ -1,0 +1,30 @@
+.search-page {
+    display: flex;
+    flex-direction: column;
+
+    .search-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .form-field {
+            width: 38rem;
+        }
+
+        .search-button {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+    }
+
+    .result-list {
+        display: flex;
+        flex-direction: column;
+        
+        padding: 30px 80px; 
+
+        .article-card {
+            margin-bottom: 10px;
+        }
+    }
+}

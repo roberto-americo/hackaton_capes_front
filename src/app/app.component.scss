@@ -19,6 +19,12 @@
             }
         }
 
+        .logo-risc {
+            img {
+                height: 42px;
+            }
+        }
+
         .header-content {
             display: flex;
             flex: 1;
@@ -30,7 +36,7 @@
                 font-weight: 600;
                 font-size: 32px;
 
-                color: #43A047;
+                color: #00B3FF;
             }
         }
     }
