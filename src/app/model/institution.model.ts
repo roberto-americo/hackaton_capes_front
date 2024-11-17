@@ -1,5 +1,11 @@
 export class Institution {
-    id: number | undefined;
-    name: string | undefined;
-    country: string | undefined;
+    id: number;
+    name: string;
+    country: string;
+
+    constructor (id: number, name: string, country: string) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+    }
 }

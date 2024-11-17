@@ -3,11 +3,15 @@
         <mat-form-field class="form-field">
             <input type="text" matInput [formControl]="searchFormControl" placeholder="Ex.: Clima" (focus)="focusOnInput()">
         </mat-form-field>
-        <button class="search-button" mat-raised-button (click)="doSearch()">
+        <button class="action-button" mat-raised-button [disabled]="loading" (click)="doSearch()">
             Pequisar</button>
+        <button class="action-button" mat-raised-button [disabled]="loading || !isGlobalViewPossivel()" (click)="doGlobalView()">
+            Visão geral</button>
     </form>
     <div class="result-list">
-        @if (articles && articles.length > 0) {
+        @if (globalViewData) {
+            <app-global-view class="global-view" [data]="globalViewData" />
+        } @else if (articles && articles.length > 0) {
             @for (article of articles; track $index) {
                 <app-article-card class="list-card" [article]="article" />
             }
