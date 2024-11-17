@@ -19,6 +19,10 @@
             }
         }
 
+        .logo-periodico-capes {
+            margin-left: 20px;
+        }
+
         .logo-risc {
             img {
                 height: 42px;
@@ -32,6 +36,8 @@
             justify-content: center;
             align-items: center;
 
+            margin-right: 213px;
+
             .title {
                 font-weight: 600;
                 font-size: 32px;
@@ -44,7 +50,6 @@
     .main-content {
         display: flex;
         flex-direction: column;
-        height: 100%;
 
         margin: 2% 20%;
         padding: 2% 0;

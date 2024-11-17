@@ -11,6 +11,6 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   public findBy(search: string): Observable<Article[]> {
-    return this.http.get<Article[]>(`/article/search/?by=${encodeURIComponent(search)}`);
+    return this.http.get<Article[]>(`/api/article/search?by=${encodeURIComponent(search)}`);
   }
 }

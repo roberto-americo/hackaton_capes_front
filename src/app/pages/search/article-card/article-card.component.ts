@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Article } from '../../../model/article.model';
+import { Utils } from '../../../common/utils';
 
 @Component({
   selector: 'app-article-card',
@@ -35,8 +36,21 @@ export class ArticleCardComponent {
     let output = '';
 
     if (this.article?.authors) {
-      output = this.article.authors[0].institution?.name || '';
-      output = ' - ' + this.article.authors[0].institution?.country || '';
+      const name = this.article.authors[0]?.institution?.name;
+      const country = this.article.authors[0]?.institution?.country;
+      const source = this.article.source?.name;
+
+      if (name) {
+        output = ' - ' +  Utils.transformTextToCamel(name);
+      }
+
+      if (source) {
+        output = ( output === '' ? ' - ' : (output + ' | ') ) +  Utils.transformTextToCamel(source);
+      }
+
+      if (country) {
+        output = ( output === '' ? ' - ' : (output + ' | ') ) +  Utils.transformTextToCamel(country);
+      }
     }
 
     return output;

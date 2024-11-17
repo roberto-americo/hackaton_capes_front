@@ -96,7 +96,8 @@ export class SearchComponent {
 
   doSearch() {
     this.loading = true;
-
+    this.articles = [];
+    
     this.articleService.findBy(this.searchFormControl.value || '').subscribe(
       {
         next: (response) => {
