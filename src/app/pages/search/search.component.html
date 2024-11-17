@@ -1,0 +1,26 @@
+<div class="search-page">
+    <form class="search-form">
+        <mat-form-field class="form-field">
+            <input type="text" matInput [formControl]="searchFormControl" placeholder="Ex.: Clima" (focus)="focusOnInput()">
+        </mat-form-field>
+        <button class="action-button" mat-raised-button [disabled]="loading" (click)="doSearch()">
+            Pequisar</button>
+        <button class="action-button" mat-raised-button [disabled]="loading || !isGlobalViewPossivel()" (click)="doGlobalView()">
+            Visão geral</button>
+    </form>
+    <div class="result-list">
+        @if (globalViewData) {
+            <app-global-view class="global-view" [data]="globalViewData" />
+        } @else if (articles && articles.length > 0) {
+            @for (article of articles; track $index) {
+                <app-article-card class="list-card" [article]="article" />
+            }
+        } @else if (loading) {
+            <span class="load"></span>
+        } @else if (!noContent) {
+            <span class="result-message">Faça sua busca!</span>
+        } @else {
+            <span class="result-message">Nada encontrado para o termo!</span>
+        }
+    </div>
+</div>
