@@ -5,6 +5,47 @@
 
     margin-top: 20px;
 
+    .resume {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        margin: 20px 20px;
+        padding: 15px;
+
+        border: 1px solid rgba(27, 31, 35, 0.15);
+        box-shadow: var(--sys-outline) 0px 1px 4px;
+
+        .line {
+            .title {
+                font-weight: 600;
+            }
+        }
+
+        .line-grade {
+            flex-direction: column;
+            display: flex;
+
+            .title {
+                font-weight: 600;
+                margin-bottom: 5px;            
+            }
+
+            .list {
+                padding: 0 15px; 
+
+                .title {
+                    font-weight: 400;
+                    font-size: .875rem;              
+                }
+
+                .value {
+                    font-size: .875rem;
+                }
+            }
+        }
+    }
+
     .chart {
         display: flex;
         flex-direction: column;

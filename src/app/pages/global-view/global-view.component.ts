@@ -3,7 +3,7 @@ import { GlobalView } from '../../model/global-view.model';
 import { Color, LegendPosition, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
 import { CommonModule } from '@angular/common';
 import { Author } from '../../model/author.model';
-import { ArticlePerYear } from '../../model/article-per-year.model copy';
+import { ArticlePerYear } from '../../model/article-per-year.model';
 import { AuthorPerArticle } from '../../model/author-per-article.model';
 import { Source } from '../../model/source.model';
 import { Keyword } from '../../model/keyword.model';
@@ -22,12 +22,18 @@ export class GlobalViewComponent {
   @Input() data: GlobalView | undefined;
   
   articlesPerYearView: ChartData[] = [];
-  authorsPerArticle: ChartData[] = [];
+  authorsPerArticle: {
+    name: string;
+    value: number;
+  }[] = [];
   keywordsPerArticle: {
     name: string;
     value: number;
   }[] = [];
-  sourcesPerArticle: ChartData[] = [];
+  sourcesPerArticle: {
+    name: string;
+    value: number;
+  }[] = [];
   keywordsPerYearPerArticle: ChartData[] = [];
   authorsPerKeywordsPerArticle: ChartData[] = [];
 
@@ -53,7 +59,7 @@ export class GlobalViewComponent {
     name: 'vivid',
     selectable: true,
     group: ScaleType.Ordinal,
-    domain: ['#005cbb', '#a75bbb', '#f4639e', '#ff8879'],
+    domain: ['#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#00BCD4', '#4CAF50', '#CDDC39', '#FFC107'],
   };
 
   ngOnInit() {
@@ -173,8 +179,14 @@ export class GlobalViewComponent {
   getPerArticleData<T>(list:{
     object: T,
     value: number
-  }[]): ChartData[] {
-    let chartData: ChartData[] = []
+  }[]): {
+    name: string;
+    value: number;
+  }[] {
+    let chartData: {
+      name: string;
+      value: number;
+    }[] = []
 
     list.forEach((item, index) => {
       if (index >= 10) {
@@ -193,12 +205,7 @@ export class GlobalViewComponent {
 
       chartData.push({
         name: name,
-        series: [
-          {
-            name: 'Artigos',
-            value: item.value
-          }
-        ]
+        value: item.value
       });
     })
 

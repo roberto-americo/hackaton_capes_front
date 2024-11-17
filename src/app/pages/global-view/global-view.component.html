@@ -1,4 +1,34 @@
 <div class="global-view">
+    <div class="resume">
+        <div class="line">
+            <span class="title">Nº de artigos: </span>
+            <span class="value">{{data?.resume?.articlesNumber}}</span>
+        </div>
+        <div class="line">
+            <span class="title">Nº de autores: </span>
+            <span class="value">{{data?.resume?.authorsNumber}}</span>
+        </div>
+        <div class="line-grade">
+            <span class="title">Nº de artigos por países: </span>
+
+            @for (country of data?.resume?.articlesCountries; track $index) {
+                <span class="list">
+                    <span class="title">{{country.object}} - </span>
+                    <span class="value">{{country.value}}</span>
+                </span>                
+            }
+        </div>
+        <div class="line-grade">
+            <span class="title">Nº de artigos por linguas: </span>
+            
+            @for (language of data?.resume?.articlesLanguages; track $index) {
+                <span class="list">
+                    <span class="title">{{language.object}} - </span>
+                    <span class="value">{{language.value}}</span>
+                </span>                
+            }
+        </div>
+    </div>
     <div class="chart">
         <span class="title">Número de publicações por ano</span>
         <ngx-charts-line-chart
@@ -18,7 +48,7 @@
     </div>
     <div class="chart space">
         <span class="title">Número de publicações por autores</span>
-        <ngx-charts-bar-horizontal-2d
+        <ngx-charts-bar-horizontal
             [view]="view"
             [results]="authorsPerArticle"
             [xAxis]="showXAxis"
@@ -34,7 +64,7 @@
     </div>
     <div class="chart space-max">
         <span class="title">Número de publicações por revista</span>
-        <ngx-charts-bar-horizontal-2d
+        <ngx-charts-bar-horizontal
             [view]="view"
             [results]="sourcesPerArticle"
             [xAxis]="showXAxis"
